@@ -1,4 +1,6 @@
 # LTRfind: a pipeline for get LTR and LAI ( base on [LTR_retriever](https://github.com/oushujun/LTR_retriever))
+# 0. Download the latest LTR_FINDER_parallel from https://github.com/oushujun/LTR_FINDER_parallel or use we provided version.
+
 # 1. Install require software by conda
 ```
 conda create -n LTR_retriever
@@ -7,7 +9,7 @@ conda install -y -c conda-forge perl perl-text-soundex
 conda install -y -c bioconda cd-hit repeatmasker
 git clone https://github.com/oushujun/LTR_retriever.git
 ./LTR_retriever/LTR_retriever -h
-conda install -c bioconda seqkit
+conda install -y -c bioconda seqkit
 chmod 757 LTRfind
 ./LTRfind -h
 ```
@@ -44,6 +46,9 @@ Input genome file must be `.fa`,not support `.fa.gz`.
 **the genome.fa sequence ID should be less then 15 character. if your file is report over 15 character, can use `seqkit seq -i genome.fa >new.genome.fa` to extract the ID and delete the info after the ID**
 if your input `genome.fa` `ChrID` may be like `>1`,in this case, you cannot use the `ChrStr` field to extract chromosome data and filter scaffold. 
 	It is recommended to use `LTRfind` after filtering by yourself. The ID length of genome.fa cannot exceed 15 characters. 
+
+**The program is set to require 36 cpu, so please provide 36 cpu when running, less than this number may cause the server to crash.**
+
 # 3. Input
 ### Diploid: 
 - speciesname 
