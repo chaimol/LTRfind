@@ -1,15 +1,18 @@
 # LTRfind: a pipeline for get LTR and LAI ( base on [LTR_retriever](https://github.com/oushujun/LTR_retriever))
-# 0. Download the latest LTR_FINDER_parallel from https://github.com/oushujun/LTR_FINDER_parallel or use we provided version.
 
-# 1. Install require software by conda
+# 0.Require software (we provided version.only for Linux X86_64)
+- [LTR_FINDER_parallel](https://github.com/oushujun/LTR_FINDER_parallel) 
+- [gt](http://genometools.org/pub/binary_distributions/)
+- [seqkit](https://bioinf.shenwei.me/seqkit/download/)
+- [LTR_retriever](https://github.com/oushujun/LTR_retriever)
+- R ggplot2 packages (for visualization only)
+
+# 1. Install LTR_retriever by conda
 ```
 conda create -n LTR_retriever
 conda activate LTR_retriever
-conda install -y -c conda-forge perl perl-text-soundex
-conda install -y -c bioconda cd-hit repeatmasker
-git clone https://github.com/oushujun/LTR_retriever.git
-./LTR_retriever/LTR_retriever -h
-conda install -y -c bioconda seqkit
+conda install -y -c bioconda ltr_retriever
+chmod 757 seqkit
 chmod 757 LTRfind
 ./LTRfind -h
 ```
@@ -17,6 +20,8 @@ you also can add  the path of `LTRfind` to the `~/.bashrc`.
 
 # 2.how to use it
 It is mainly used for the identification of diploid and polyploid LTR and the calculation of LAI value.
+### Modify `config.ini` at first
+
 ### Purpose:
 Get the LTR_RTs in the genome and calculate the LAI value of the genome at the same time. 
 for Diploid use (`-D|Diploid`)
@@ -43,11 +48,19 @@ for Polyploid (up to octoploid) use (`-P|Polyploid`)
 ### Note:
 In run `-D|Diploid` ，if you input the ChrString , will extract the Chromosome sequence for LTR and LAI (not analysis the scaffold sequence).
 Input genome file must be `.fa`,not support `.fa.gz`.
-**the genome.fa sequence ID should be less then 15 character. if your file is report over 15 character, can use `seqkit seq -i genome.fa >new.genome.fa` to extract the ID and delete the info after the ID**
-if your input `genome.fa` `ChrID` may be like `>1`,in this case, you cannot use the `ChrStr` field to extract chromosome data and filter scaffold. 
-	It is recommended to use `LTRfind` after filtering by yourself. The ID length of genome.fa cannot exceed 15 characters. 
 
-**The program is set to require 36 cpu, so please provide 36 cpu when running, less than this number may cause the server to crash.**
+**the genome.fa sequence ID should be less then 15 character. if your file is report over 15 character, can use `seqkit seq -i genome.fa >new.genome.fa` to extract the ID and delete the info after the ID**
+
+if your input `genome.fa` `ChrID` may be like `>1`,in this case, you cannot use the `ChrStr` field to extract chromosome data and filter scaffold. 
+It is recommended to use `LTRfind` after filtering by yourself. The ID length of genome.fa cannot exceed 15 characters. 
+### Visualization
+if you jsut want use the visualization module `visual_LAI` and `visual_LTR`.
+
+**visual_LAI.R used only for chomosome, so if please delete the rows which is contain contigs and scaffolds in \*.out.LAI**
+```
+Rscript visual_LAI.R genome.out.LAI speciesname
+Rscript visual_LAI.R genome.pass.list speciesname
+```
 
 # 3. Input
 ### Diploid: 
@@ -101,11 +114,21 @@ GGTTTTCTTTCCTTCACTTAGCTATGGATGGTTTATCTTCATTTGTTATATTGGATACAA
 # 4. Output
 All the output is the same with [LTR_retriever](https://github.com/oushujun/LTR_retriever).
 For Chinese, there are detail info [links](https://www.jianshu.com/p/ed289822c825) in Chinese.
+
 # 5. Author & Version
 - Build date:2021.06.17
-- Last update: 2021.11.02
-- Version: 0.1.0
+- Last update: 2022.03.02
+- Version: 0.3.0
 - Author: Mol Chai
 - Email: chaimol@163.com
 # 6. Update info
-Using LTR_FINDER_parallel instead of LTR_FINDER, the running speed will be greatly improved.
+### (2022/03/02) update to Version 0.3.0
++ Add `config.ini` file for user control the input software path .
++ Add the parameter `threads` to specify the number of cpus and the parameter `miu` to specify the differentiation speed. 
++ Add visual module `visul_LTR.R` and `visual_LAI.R`
+
+### (2021/11/19)
+Modify the value of `ltrharvest -similar 90` to `ltrharvest -similar 85`. In order to ensure that LTR_harvest and LTR_FINDER_parallel use the same similarity value (0.85). 
+
+### (2021/11/05)
+Using LTR_FINDER_parallel instead of LTR_FINDER, the running speed will be greatly improved. 

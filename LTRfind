@@ -1,5 +1,5 @@
-#!/bin/bash
-envname="LTR_retriever" #如果你创建的conda环境不是这个名称，请先修改此处的名称。
+#!/usr/bin/bash
+source config.ini
 function activate(){
 	condapath=`conda info | grep 'base environment'|cut -d : -f2|cut -d " " -f2`
 	source ${condapath}/etc/profile.d/conda.sh
@@ -34,7 +34,6 @@ function getChr(){
 		echo "Usage:getChr ChrString genome.fa"
 		exit 1
 	fi
-	activate
 	ChrStr=$1 #参数1：染色体的字符（例如：chr或Chr ）
 	genome=$2 #基因组文件，非压缩文件
 	fullname="${genome##*/}"
@@ -44,7 +43,7 @@ function getChr(){
 	#echo $dir , $fullname , $filename , $extension
 	#/the/path , mylib.1.0.1a.zip , mylib.1.0.1a , zip
 	cat ${genome}|grep ${ChrStr}|cut -d ">" -f2 >cash.Chrlist.txt
-	seqkit grep -f cash.Chrlist.txt ${genome}|seqkit seq -i > ${filename}.chr.fa
+	${seqkit} grep -f cash.Chrlist.txt ${genome}|${seqkit} seq -i > ${filename}.chr.fa
 	#rm -rf cash.Chrlist.txt
 }
 
@@ -61,7 +60,7 @@ function Diploid(){
 		"
 		exit 1
 	fi
-	activate
+
 	#判断必要参数是否存在，不存在则退出
 	if ! [ -e ${genome} ];then
 		echo "Error in Diploid module!genome file ${genome} no exist!"
@@ -93,7 +92,7 @@ function Diploid(){
 	fi
 	
 	# LTR_FINDER
-	perl LTR_FINDER_parallel-1.1/LTR_FINDER_parallel -seq ${genome} -threads 36 -harvest_out 
+	${perl} ${LTR_FINDER_parallel} -seq ${genome} -threads ${threads} -harvest_out 
 	if [ ! $? -eq 0 ];then
 		echo "Error:in LTR_FINDER_parllel"
 		exit 1
@@ -101,17 +100,28 @@ function Diploid(){
 	genomefile="`basename ${genome}`"
 	mv ${genomefile}.finder.combine.scn ${species}.finder.scn
 	#LTRharvest
-	gt suffixerator \
+	${gt} suffixerator \
 	  -db ${genome} \
 	  -indexname ${species} \
 	  -tis -suf -lcp -des -ssp -sds -dna
-	gt ltrharvest \
+	${gt} ltrharvest \
 	  -index ${species} \
-	  -similar 90 -vic 10 -seed 20 -seqids yes \
+	  -similar 85 -vic 10 -seed 20 -seqids yes \
 	  -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 \
 	  -motif TGCA -motifmis 1  > ${species}.harvest.scn
+
+	activate
 	# LTR_retriever 合并前两次的分析(如果你的物种的核苷酸变异速率不是7x10E-9,请手动修改最后一个值)
-	LTR_retriever -genome ${genome} -inharvest ${species}.harvest.scn -infinder ${species}.finder.scn -threads 36 -u 7e-9
+	LTR_retriever -genome ${genome} -inharvest ${species}.harvest.scn -infinder ${species}.finder.scn -threads ${threads} -u ${miu}
+	if [ ! $? -eq 0 ];then
+		echo "Error in LTR_retriever"
+		exit 1
+	fi
+	
+	#初步可视化
+	cat ${genome}.pass.list|rev|awk '{print $1,$2,$3}'|rev|tr " " "\t" >${species}.LTR_time.xls
+	${Rscript} visualization/visual_LAI.R ${genome}.out.LAI ${species}
+	${Rscript} visualization/visual_LTR.R ${species}.LTR_time.xls ${species}
 }
 
 ##针对多倍体的算法优化
@@ -238,6 +248,7 @@ function Polyploid(){
 	do
 		echo "start analysis ${i}.ploidy.list.txt in `date`"
 		LAI -genome ${chr_genome} -intact ${chr_genome}.pass.list -all ${chr_genome}.out -mono ${i}.ploidy.list.txt
+		${Rscript} visualization/visual_LAI.R ${i}.*.out.LAI ${i}
 	done
 
 }
@@ -296,7 +307,7 @@ Note:\n
 		;;
 	-V|--version)
 		echo -e "
-		Version: V0.1.0 \n
+		Version: V0.3.0 \n
 		Author: Mol Chai \n
 		Email: chaimol@163.com "
 		;;
