@@ -11,9 +11,17 @@
 ```
 conda create -n LTR_retriever
 conda activate LTR_retriever
-conda install -y -c bioconda ltr_retriever
+conda install -y -c conda-forge perl perl-text-soundex
+conda install -y -c bioconda cd-hit repeatmasker
+git clone https://github.com/oushujun/LTR_retriever.git
+./LTR_retriever/LTR_retriever -h
+
+chmod 757 gt-1.6.2/bin/gt
 chmod 757 seqkit
 chmod 757 LTRfind
+chmod 757 LTR_FINDER_parallel-1.1/bin/LTR_FINDER.x86_64-1.0.7/ltr_finder
+
+
 ./LTRfind -h
 ```
 you also can add  the path of `LTRfind` to the `~/.bashrc`.
@@ -44,6 +52,7 @@ for Polyploid (up to octoploid) use (`-P|Polyploid`)
 	LTRfind -P -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_C 
 	LTRfind -P -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_C -p4 Ghir_B
 	LTRfind Polyploid -abbr Species -g genome.fa -p1 Ghir_A -p2 Ghir_D
+	LTRfind -D A.thaliana ${PWD}/example/LTRfind/Ath.Chr4_5.fa chr
 ```
 ### Note:
 In run `-D|Diploid` ，if you input the ChrString , will extract the Chromosome sequence for LTR and LAI (not analysis the scaffold sequence).
@@ -117,11 +126,16 @@ For Chinese, there are detail info [links](https://www.jianshu.com/p/ed289822c82
 
 # 5. Author & Version
 - Build date:2021.06.17
-- Last update: 2022.03.02
-- Version: 0.3.0
+- Last update: 2022.03.04
+- Version: 0.3.1
 - Author: Mol Chai
 - Email: chaimol@163.com
 # 6. Update info
+### (2022/03/04) update to Version 0.3.1
++ Add visual module `getLTRpeak.R`.
++ Add example for test.
++ The test passed the module for diploid! Fixed some bugs!
+ 
 ### (2022/03/02) update to Version 0.3.0
 + Add `config.ini` file for user control the input software path .
 + Add the parameter `threads` to specify the number of cpus and the parameter `miu` to specify the differentiation speed. 

@@ -1,5 +1,9 @@
 #!/usr/bin/bash
-source config.ini
+
+#用于获取脚本所在的路径，保存为变量path1,调用其他脚本都依赖这个路径。
+path1="$(cd "$(dirname ${BASH_SOURCE[0]})";pwd)"
+source ${path1}/config.ini
+
 function activate(){
 	condapath=`conda info | grep 'base environment'|cut -d : -f2|cut -d " " -f2`
 	source ${condapath}/etc/profile.d/conda.sh
@@ -83,16 +87,16 @@ function Diploid(){
 	fi
 	
 	if [ -e ${species}.harvest.scn ]; then
-			echo "已存在输出文件 ${species}.harvest.scn,自动删除旧版本。"
-			rm -rf ${species}.harvest.scn
+			echo "已存在输出文件 ${species}.harvest.scn,自动重命名旧版本为${species}.harvest.old.scn。"
+			mv ${species}.harvest.scn ${species}.harvest.old.scn
 	fi
 	if [ -e ${species}.finder.scn  ]; then
-			echo "已存在输出文件 ${species}.finder.scn ,自动删除旧版本。"
-			rm -rf ${species}.finder.scn 
+			echo "已存在输出文件 ${species}.finder.scn ,自动重命名旧版本为${species}.finder.old.scn。"
+			mv ${species}.finder.scn ${species}.finder.old.scn
 	fi
 	
 	# LTR_FINDER
-	${perl} ${LTR_FINDER_parallel} -seq ${genome} -threads ${threads} -harvest_out 
+	${perl} ${LTR_FINDER_parallel} -seq ${genome} -threads ${threads} -harvest_out -finder ${path1}/LTR_FINDER_parallel-1.1/bin/LTR_FINDER.x86_64-1.0.7
 	if [ ! $? -eq 0 ];then
 		echo "Error:in LTR_FINDER_parllel"
 		exit 1
@@ -120,8 +124,8 @@ function Diploid(){
 	
 	#初步可视化
 	cat ${genome}.pass.list|rev|awk '{print $1,$2,$3}'|rev|tr " " "\t" >${species}.LTR_time.xls
-	${Rscript} visualization/visual_LAI.R ${genome}.out.LAI ${species}
-	${Rscript} visualization/visual_LTR.R ${species}.LTR_time.xls ${species}
+	Rscript ${path1}/visualization/visual_LAI.R ${genome}.out.LAI ${species} ${PWD}
+	Rscript ${path1}/visualization/visual_LTR.R ${species}.LTR_time.xls ${species} ${PWD}
 }
 
 ##针对多倍体的算法优化
@@ -248,7 +252,7 @@ function Polyploid(){
 	do
 		echo "start analysis ${i}.ploidy.list.txt in `date`"
 		LAI -genome ${chr_genome} -intact ${chr_genome}.pass.list -all ${chr_genome}.out -mono ${i}.ploidy.list.txt
-		${Rscript} visualization/visual_LAI.R ${i}.*.out.LAI ${i}
+		Rscript ${path1}/visualization/visual_LAI.R ${i}.ploidy.list.txt.LAI ${i} ${PWD}
 	done
 
 }
@@ -307,7 +311,7 @@ Note:\n
 		;;
 	-V|--version)
 		echo -e "
-		Version: V0.3.0 \n
+		Version: V0.3.1 \n
 		Author: Mol Chai \n
 		Email: chaimol@163.com "
 		;;

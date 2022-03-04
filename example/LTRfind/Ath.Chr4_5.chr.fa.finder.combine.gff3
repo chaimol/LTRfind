@@ -1,0 +1,460 @@
+##gff-version   3
+##sequence-region   chr4 1 18585056
+##sequence-region   chr5 1 26975502
+#chr4
+#chr5
+chr4	LTR_FINDER_parallel	repeat_region	1312401	1317218	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	1312401	1317218	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=ATAGA;ltr_identity=99.4;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1312401	1312557	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1317062	1317218	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	1669366	1680247	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	1669366	1680247	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GCGAG;ltr_identity=96.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1669366	1670163	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1679445	1680247	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	1684997	1695918	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	1684997	1695918	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GTAGC;ltr_identity=95.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1684997	1686740	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1694176	1695918	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	1749270	1755807	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	1749270	1755807	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=ACAGT;ltr_identity=97.6;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1749270	1749855	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1755222	1755807	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	1943797	1955321	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	1943797	1955321	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AAGAC;ltr_identity=96.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1943797	1944303	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	1954810	1955321	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2001189	2010967	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2001189	2010967	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=ATGCG;ltr_identity=95.5;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2001189	2001992	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2010160	2010967	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2090158	2094315	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2090158	2094315	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=TTATG;ltr_identity=95.6;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2090158	2090970	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2093490	2094315	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2198165	2203993	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2198165	2203993	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GTCAG;ltr_identity=98.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2198165	2198714	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2203444	2203993	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2280098	2286556	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2280098	2286556	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=TCAA;ltr_identity=94.6;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2280098	2280244	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2286410	2286556	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2302657	2307842	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2302657	2307842	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AATAT;ltr_identity=96.3;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2302657	2303145	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2307358	2307842	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2730142	2733130	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2730142	2733130	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AGATT;ltr_identity=98.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2730142	2730945	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2732327	2733130	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	2989844	2994783	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	2989844	2994783	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=ATTAT;ltr_identity=99.8;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2989844	2990400	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	2994227	2994783	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	3027484	3034090	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	3027484	3034090	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AACTT;ltr_identity=94.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3027484	3027636	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3033938	3034090	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	3344833	3354744	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	3344833	3354744	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=CAAAG;ltr_identity=93.3;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3344833	3346558	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3352991	3354744	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	3455688	3469254	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	3455688	3469254	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AAACT;ltr_identity=90.2;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3455688	3457357	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3467637	3469254	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	3929252	3935831	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	3929252	3935831	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AGTTC;ltr_identity=93.3;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3929252	3930445	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3934640	3935831	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	3987766	3997961	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	3987766	3997961	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=CATAT;ltr_identity=99.2;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3987766	3989318	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	3996409	3997961	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	4133384	4142040	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	4133384	4142040	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GGCAT;ltr_identity=92.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4133384	4134515	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4140894	4142040	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	4239123	4249773	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	4239123	4249773	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GTTTG;ltr_identity=97.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4239123	4240749	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4248144	4249773	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	4385723	4392955	.	+	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	4385723	4392955	.	+	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=AGGG;ltr_identity=95.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4385723	4386400	.	+	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4392281	4392955	.	+	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	4502301	4514086	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	4502301	4514086	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=CTTGC;ltr_identity=90.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4502301	4502803	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4513611	4514086	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	4677142	4684195	.	-	.	ID=repeat_region1
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	4677142	4684195	.	-	.	ID=LTR_retrotransposon1;Parent=repeat_region1;tsd=GAATG;ltr_identity=94.8;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4677142	4678300	.	-	.	Parent=LTR_retrotransposon1
+chr4	LTR_FINDER_parallel	long_terminal_repeat	4683036	4684195	.	-	.	Parent=LTR_retrotransposon1
+###
+chr4	LTR_FINDER_parallel	repeat_region	5063538	5074228	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5063538	5074228	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=ACTAT;ltr_identity=95.9;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5063538	5064054	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5073713	5074228	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	5078578	5083862	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5078578	5083862	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=N;ltr_identity=94.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5078578	5079089	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5083368	5083862	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	5127101	5135152	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5127101	5135152	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=AAGAG;ltr_identity=97.5;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5127101	5128257	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5133997	5135152	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	5303774	5309049	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5303774	5309049	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=ATTTA;ltr_identity=98.8;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5303774	5304198	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5308623	5309049	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	5326460	5331580	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5326460	5331580	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=TAACT;ltr_identity=92;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5326460	5326621	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5331427	5331580	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	5822426	5827300	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	5822426	5827300	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=ATATA;ltr_identity=99.3;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5822426	5822560	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	5827166	5827300	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	6067399	6072635	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	6067399	6072635	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=GTTAT;ltr_identity=87.2;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6067399	6067880	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6072095	6072635	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	6450792	6455442	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	6450792	6455442	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=CCTG;ltr_identity=91.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6450792	6451068	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6455167	6455442	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	6467413	6473067	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	6467413	6473067	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=CTATT;ltr_identity=96.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6467413	6468099	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6472378	6473067	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	6914662	6919598	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	6914662	6919598	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=GAGAG;ltr_identity=96.3;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6914662	6914877	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6919383	6919598	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	6992609	6994363	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	6992609	6994363	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=AGCGT;ltr_identity=98.4;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6992609	6992865	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	6994107	6994363	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	7359462	7364591	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	7359462	7364591	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=AAAAT;ltr_identity=98.8;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	7359462	7359623	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	7364430	7364591	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	7816826	7821792	.	-	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	7816826	7821792	.	-	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=AAATC;ltr_identity=97.5;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	7816826	7816987	.	-	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	7821631	7821792	.	-	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	8620192	8623023	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	8620192	8623023	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=ATTAA;ltr_identity=99.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	8620192	8620544	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	8622671	8623023	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	9908996	9914046	.	+	.	ID=repeat_region2
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	9908996	9914046	.	+	.	ID=LTR_retrotransposon2;Parent=repeat_region2;tsd=ATATG;ltr_identity=98.1;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	9908996	9909157	.	+	.	Parent=LTR_retrotransposon2
+chr4	LTR_FINDER_parallel	long_terminal_repeat	9913886	9914046	.	+	.	Parent=LTR_retrotransposon2
+###
+chr4	LTR_FINDER_parallel	repeat_region	10899527	10904692	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	10899527	10904692	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=GTAAT;ltr_identity=95.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	10899527	10899689	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	10904531	10904692	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	11363556	11368653	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	11363556	11368653	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=TGTGT;ltr_identity=99.2;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11363556	11364025	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11368181	11368653	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	11676468	11681340	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	11676468	11681340	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=CTTTT;ltr_identity=98.4;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11676468	11676652	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11681156	11681340	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	11820160	11825725	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	11820160	11825725	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=TAATC;ltr_identity=99.5;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11820160	11820550	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	11825335	11825725	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	13624548	13627187	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	13624548	13627187	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=TCAAG;ltr_identity=99;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	13624548	13624754	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	13626981	13627187	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	13624548	13631872	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	13624548	13631872	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=TCAAG;ltr_identity=97.6;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	13624548	13624754	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	13631666	13631872	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	14258825	14263830	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	14258825	14263830	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=CTATT;ltr_identity=99.2;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	14258825	14259197	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	14263458	14263830	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	14427562	14430043	.	-	.	ID=repeat_region3
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	14427562	14430043	.	-	.	ID=LTR_retrotransposon3;Parent=repeat_region3;tsd=ATTA;ltr_identity=89.8;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	14427562	14427716	.	-	.	Parent=LTR_retrotransposon3
+chr4	LTR_FINDER_parallel	long_terminal_repeat	14429894	14430043	.	-	.	Parent=LTR_retrotransposon3
+###
+chr4	LTR_FINDER_parallel	repeat_region	15559246	15562581	.	-	.	ID=repeat_region4
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	15559246	15562581	.	-	.	ID=LTR_retrotransposon4;Parent=repeat_region4;tsd=ATTAT;ltr_identity=98.7;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	15559246	15559723	.	-	.	Parent=LTR_retrotransposon4
+chr4	LTR_FINDER_parallel	long_terminal_repeat	15562104	15562581	.	-	.	Parent=LTR_retrotransposon4
+###
+chr4	LTR_FINDER_parallel	repeat_region	17702415	17707067	.	-	.	ID=repeat_region4
+chr4	LTR_FINDER_parallel	LTR_retrotransposon	17702415	17707067	.	-	.	ID=LTR_retrotransposon4;Parent=repeat_region4;tsd=TTTA;ltr_identity=89.5;seq_number=0
+chr4	LTR_FINDER_parallel	long_terminal_repeat	17702415	17702810	.	-	.	Parent=LTR_retrotransposon4
+chr4	LTR_FINDER_parallel	long_terminal_repeat	17706675	17707067	.	-	.	Parent=LTR_retrotransposon4
+###
+chr5	LTR_FINDER_parallel	repeat_region	64772	71199	.	+	.	ID=repeat_region5
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	64772	71199	.	+	.	ID=LTR_retrotransposon5;Parent=repeat_region5;tsd=GATGC;ltr_identity=99.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	64772	65108	.	+	.	Parent=LTR_retrotransposon5
+chr5	LTR_FINDER_parallel	long_terminal_repeat	70863	71199	.	+	.	Parent=LTR_retrotransposon5
+###
+chr5	LTR_FINDER_parallel	repeat_region	4208083	4213084	.	+	.	ID=repeat_region5
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	4208083	4213084	.	+	.	ID=LTR_retrotransposon5;Parent=repeat_region5;tsd=AAAAC;ltr_identity=100;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	4208083	4208545	.	+	.	Parent=LTR_retrotransposon5
+chr5	LTR_FINDER_parallel	long_terminal_repeat	4212622	4213084	.	+	.	Parent=LTR_retrotransposon5
+###
+chr5	LTR_FINDER_parallel	repeat_region	8624511	8629381	.	-	.	ID=repeat_region6
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	8624511	8629381	.	-	.	ID=LTR_retrotransposon6;Parent=repeat_region6;tsd=CTCTC;ltr_identity=99.4;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	8624511	8624691	.	-	.	Parent=LTR_retrotransposon6
+chr5	LTR_FINDER_parallel	long_terminal_repeat	8629201	8629381	.	-	.	Parent=LTR_retrotransposon6
+###
+chr5	LTR_FINDER_parallel	repeat_region	8927997	8934328	.	-	.	ID=repeat_region6
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	8927997	8934328	.	-	.	ID=LTR_retrotransposon6;Parent=repeat_region6;tsd=TTTCT;ltr_identity=98.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	8927997	8928333	.	-	.	Parent=LTR_retrotransposon6
+chr5	LTR_FINDER_parallel	long_terminal_repeat	8933992	8934328	.	-	.	Parent=LTR_retrotransposon6
+###
+chr5	LTR_FINDER_parallel	repeat_region	9211109	9218667	.	+	.	ID=repeat_region6
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	9211109	9218667	.	+	.	ID=LTR_retrotransposon6;Parent=repeat_region6;tsd=ACCCG;ltr_identity=96.1;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9211109	9212527	.	+	.	Parent=LTR_retrotransposon6
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9217282	9218667	.	+	.	Parent=LTR_retrotransposon6
+###
+chr5	LTR_FINDER_parallel	repeat_region	9272140	9274532	.	-	.	ID=repeat_region6
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	9272140	9274532	.	-	.	ID=LTR_retrotransposon6;Parent=repeat_region6;tsd=CAGCG;ltr_identity=100;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9272140	9272479	.	-	.	Parent=LTR_retrotransposon6
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9274193	9274532	.	-	.	Parent=LTR_retrotransposon6
+###
+chr5	LTR_FINDER_parallel	repeat_region	9381704	9386621	.	-	.	ID=repeat_region6
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	9381704	9386621	.	-	.	ID=LTR_retrotransposon6;Parent=repeat_region6;tsd=CAAAT;ltr_identity=99.4;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9381704	9381865	.	-	.	Parent=LTR_retrotransposon6
+chr5	LTR_FINDER_parallel	long_terminal_repeat	9386460	9386621	.	-	.	Parent=LTR_retrotransposon6
+###
+chr5	LTR_FINDER_parallel	repeat_region	10308307	10314018	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	10308307	10314018	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=TAGCC;ltr_identity=99;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10308307	10308712	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10313613	10314018	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	10400732	10405873	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	10400732	10405873	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AATAA;ltr_identity=97.5;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10400732	10400893	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10405712	10405873	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	10764243	10772498	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	10764243	10772498	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ATTTG;ltr_identity=98.6;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10764243	10765395	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	10771352	10772498	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11042770	11057642	.	-	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11042770	11057642	.	-	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AAACA;ltr_identity=91.6;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11042770	11043531	.	-	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11056884	11057642	.	-	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11086024	11099205	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11086024	11099205	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ATAAG;ltr_identity=96.6;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11086024	11086526	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11098703	11099205	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11228872	11242443	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11228872	11242443	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ATCA;ltr_identity=96.9;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11228872	11234023	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11237296	11242443	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11320516	11331861	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11320516	11331861	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AAAGT;ltr_identity=99.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11320516	11322322	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11330057	11331861	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11503489	11512862	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11503489	11512862	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ACAAA;ltr_identity=96;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11503489	11504268	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11512083	11512862	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11527310	11538273	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11527310	11538273	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=GAGAC;ltr_identity=95.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11527310	11527810	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11537772	11538273	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11621560	11635041	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11621560	11635041	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=TATAAA;ltr_identity=93.1;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11621560	11622098	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11634497	11635041	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11686010	11697351	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11686010	11697351	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AAAAG;ltr_identity=99.8;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11686010	11687814	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11695547	11697351	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11810265	11821592	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11810265	11821592	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AATGA;ltr_identity=98.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11810265	11812057	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11819788	11821592	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11903693	11915221	.	-	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11903693	11915221	.	-	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=GAGTC;ltr_identity=95.1;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11903693	11905443	.	-	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11913489	11915221	.	-	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	11957652	11966557	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	11957652	11966557	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AATA;ltr_identity=89.9;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11957652	11958105	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	11966105	11966557	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	12007211	12018604	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	12007211	12018604	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AAGTG;ltr_identity=98;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12007211	12008968	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12016847	12018604	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	12029290	12043305	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	12029290	12043305	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=GGCTA;ltr_identity=98.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12029290	12031036	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12041559	12043305	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	12113704	12120134	.	-	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	12113704	12120134	.	-	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ACTTT;ltr_identity=99.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12113704	12114040	.	-	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12119798	12120134	.	-	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	12518417	12531276	.	-	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	12518417	12531276	.	-	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=TCAAG;ltr_identity=92.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12518417	12519002	.	-	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12530705	12531276	.	-	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	12639602	12650823	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	12639602	12650823	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=TTCAT;ltr_identity=94;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12639602	12641361	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	12649091	12650823	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	13142244	13148925	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	13142244	13148925	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AACGT;ltr_identity=94.5;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13142244	13143431	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13147734	13148925	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	13162659	13166515	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	13162659	13166515	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=AGTT;ltr_identity=94.2;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13162659	13163794	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13165391	13166515	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	13261021	13272510	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	13261021	13272510	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=GAACC;ltr_identity=99.4;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13261021	13262781	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13270750	13272510	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	13536039	13543177	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	13536039	13543177	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ATTGG;ltr_identity=96.1;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13536039	13537698	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13541507	13543177	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	13994795	14000224	.	+	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	13994795	14000224	.	+	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=ATACC;ltr_identity=100;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13994795	13995428	.	+	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	13999591	14000224	.	+	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	14756551	14764092	.	-	.	ID=repeat_region7
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	14756551	14764092	.	-	.	ID=LTR_retrotransposon7;Parent=repeat_region7;tsd=CATG;ltr_identity=92.4;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	14756551	14756695	.	-	.	Parent=LTR_retrotransposon7
+chr5	LTR_FINDER_parallel	long_terminal_repeat	14763948	14764092	.	-	.	Parent=LTR_retrotransposon7
+###
+chr5	LTR_FINDER_parallel	repeat_region	15175728	15180948	.	+	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	15175728	15180948	.	+	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=TAGAC;ltr_identity=98.9;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15175728	15176294	.	+	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15180381	15180948	.	+	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	15233371	15245268	.	-	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	15233371	15245268	.	-	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=TTCAC;ltr_identity=96.5;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15233371	15233822	.	-	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15244816	15245268	.	-	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	15646197	15651170	.	+	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	15646197	15651170	.	+	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=TTCTC;ltr_identity=99.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15646197	15646569	.	+	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15650798	15651170	.	+	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	15671490	15676363	.	+	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	15671490	15676363	.	+	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=ATCT;ltr_identity=100;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15671490	15671592	.	+	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15676261	15676363	.	+	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	15685054	15689939	.	-	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	15685054	15689939	.	-	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=ATCT;ltr_identity=99;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15685054	15685156	.	-	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	15689837	15689939	.	-	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	17596764	17605846	.	+	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	17596764	17605846	.	+	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=GATAT;ltr_identity=99.8;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	17596764	17597312	.	+	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	17605298	17605846	.	+	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	18233631	18238198	.	+	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	18233631	18238198	.	+	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=ATTGT;ltr_identity=99.6;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	18233631	18233867	.	+	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	18237961	18238198	.	+	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	18490608	18495233	.	-	.	ID=repeat_region8
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	18490608	18495233	.	-	.	ID=LTR_retrotransposon8;Parent=repeat_region8;tsd=AAAAC;ltr_identity=100;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	18490608	18490878	.	-	.	Parent=LTR_retrotransposon8
+chr5	LTR_FINDER_parallel	long_terminal_repeat	18494963	18495233	.	-	.	Parent=LTR_retrotransposon8
+###
+chr5	LTR_FINDER_parallel	repeat_region	22002017	22006884	.	-	.	ID=repeat_region9
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	22002017	22006884	.	-	.	ID=LTR_retrotransposon9;Parent=repeat_region9;tsd=CATTC;ltr_identity=98.3;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	22002017	22002197	.	-	.	Parent=LTR_retrotransposon9
+chr5	LTR_FINDER_parallel	long_terminal_repeat	22006704	22006884	.	-	.	Parent=LTR_retrotransposon9
+###
+chr5	LTR_FINDER_parallel	repeat_region	22911048	22916161	.	-	.	ID=repeat_region9
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	22911048	22916161	.	-	.	ID=LTR_retrotransposon9;Parent=repeat_region9;tsd=ATTTT;ltr_identity=90.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	22911048	22911208	.	-	.	Parent=LTR_retrotransposon9
+chr5	LTR_FINDER_parallel	long_terminal_repeat	22916000	22916161	.	-	.	Parent=LTR_retrotransposon9
+###
+chr5	LTR_FINDER_parallel	repeat_region	23134881	23139981	.	-	.	ID=repeat_region9
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	23134881	23139981	.	-	.	ID=LTR_retrotransposon9;Parent=repeat_region9;tsd=AGTAT;ltr_identity=93.7;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	23134881	23135439	.	-	.	Parent=LTR_retrotransposon9
+chr5	LTR_FINDER_parallel	long_terminal_repeat	23139452	23139981	.	-	.	Parent=LTR_retrotransposon9
+###
+chr5	LTR_FINDER_parallel	repeat_region	26258300	26260067	.	+	.	ID=repeat_region10
+chr5	LTR_FINDER_parallel	LTR_retrotransposon	26258300	26260067	.	+	.	ID=LTR_retrotransposon10;Parent=repeat_region10;tsd=AGATT;ltr_identity=98.8;seq_number=1
+chr5	LTR_FINDER_parallel	long_terminal_repeat	26258300	26258461	.	+	.	Parent=LTR_retrotransposon10
+chr5	LTR_FINDER_parallel	long_terminal_repeat	26259906	26260067	.	+	.	Parent=LTR_retrotransposon10
+###
