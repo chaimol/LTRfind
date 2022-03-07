@@ -62,3 +62,5 @@ dev.off()
 if (file.exists("Rplots.pdf")){
   file.remove("Rplots.pdf")
 }
+save.image(file=paste0(abbr,".LTR.Rdata"))
+print(paste0("save LAI data to ",workdir,"/",abbr,".LTR.Rdata"))

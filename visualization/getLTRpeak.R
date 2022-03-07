@@ -92,3 +92,5 @@ print(paste0("output all the peak to ",getwd(),"/All.LTR_peak.csv"))
 if (file.exists("Rplots.pdf")){
   file.remove("Rplots.pdf")
 }
+save.image(file=paste0(abbr,".LTRpeak.Rdata"))
+print(paste0("save LAI data to ",workdir,"/",abbr,".LTRpeak.Rdata"))
