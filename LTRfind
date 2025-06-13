@@ -1,321 +1,313 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-#用于获取脚本所在的路径，保存为变量path1,调用其他脚本都依赖这个路径。
-path1="$(cd "$(dirname ${BASH_SOURCE[0]})";pwd)"
-source ${path1}/config.ini
+# 获取脚本所在路径
+path1="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-function activate(){
-	condapath=`conda info | grep 'base environment'|cut -d : -f2|cut -d " " -f2`
-	source ${condapath}/etc/profile.d/conda.sh
-	conda deactivate
-	conda activate ${envname}
-	conda list
-	conda env list
-}
-#LTR分析流程自动化脚本
-#require software:LTR_retriever,LTRharvest,LTR_FINDER,seqkit
+#获取工作路径
+work_path=${PWD}
 
-##检测ID的长度是否超过15个字符
-function checkID(){
-	genome=$1
-	cat ${genome}|grep ^">"|cut -d ">" -f2 >cash.ID.txt
-	cat cash.ID.txt|while read line;
-	do
-	ID_len=${#line} #获取ID的长度
-	#ID_len=`echo ${line} |awk '{print length($0)}'`
-	echo "${line}的长度是${ID_len}"
-		if [ ${ID_len} -gt 15 ];then
-			echo "ID的长度超过15个字符，请使用seqkit修改ID后，再重新运行！"
-			exit 1
-		fi
-	done
-	#rm -rf cash.ID.txt
-}
+# 引入配置文件
+source "${path1}/config.ini"
 
-#或许只包含染色体的序列（删除scaffold）
-function getChr(){
-	if [ $# -lt 2 ];then
-		echo "Usage:getChr ChrString genome.fa"
-		exit 1
-	fi
-	ChrStr=$1 #参数1：染色体的字符（例如：chr或Chr ）
-	genome=$2 #基因组文件，非压缩文件
-	fullname="${genome##*/}"
-	dir="${genome%/*}"
-	extension="${fullname##*.}"
-	filename="${fullname%.*}"
-	#echo $dir , $fullname , $filename , $extension
-	#/the/path , mylib.1.0.1a.zip , mylib.1.0.1a , zip
-	cat ${genome}|grep ${ChrStr}|cut -d ">" -f2 >cash.Chrlist.txt
-	${seqkit} grep -f cash.Chrlist.txt ${genome}|${seqkit} seq -i > ${filename}.chr.fa
-	#rm -rf cash.Chrlist.txt
+# 解析命令行参数
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -u|--miu)
+            miu="$2"
+            shift 2
+            ;;
+        -t|--threads)
+            threads="$2"
+            shift 2
+            ;;
+        *)
+            # 其他参数保持不变
+            break
+            ;;
+    esac
+done
+
+# 激活conda环境函数
+function activate() {
+    condapath=$(conda info | awk -F': ' '/base environment/{print $2}' | xargs)
+    source "${condapath}/etc/profile.d/conda.sh"
+    conda deactivate
+    conda activate "${envname}"
+    conda list
+    conda env list
 }
 
-#主函数：用于获取LTR和LAI的值
-function Diploid(){
-	species=$1
-	genome=$2
-	ChrStr=$3
-	if [ $# -lt 2 ];then
-		echo -e "
-		Usage:\n
-		Diploid species genome.fa \n
-		Note:Only for Diploid \n
-		"
-		exit 1
-	fi
-
-	#判断必要参数是否存在，不存在则退出
-	if ! [ -e ${genome} ];then
-		echo "Error in Diploid module!genome file ${genome} no exist!"
-		exit 1
-	fi
-	
-	#判断是否存在ChrStr参数
-	if [ ${#ChrStr} -ne 0 ];then
-		getChr ${ChrStr} ${genome}
-		fullname="${genome##*/}"
-		filename="${fullname%.*}"
-		genome="${filename}.chr.fa"
-	fi
-	
-	#检测ID长度是否超过15个字符
-	checkID ${genome}
-	if ! [ $? -eq 0 ];then
-		echo "Not pass the check of ID length >15 !"
-		exit 1
-	fi
-	
-	if [ -e ${species}.harvest.scn ]; then
-			echo "已存在输出文件 ${species}.harvest.scn,自动重命名旧版本为${species}.harvest.old.scn。"
-			mv ${species}.harvest.scn ${species}.harvest.old.scn
-	fi
-	if [ -e ${species}.finder.scn  ]; then
-			echo "已存在输出文件 ${species}.finder.scn ,自动重命名旧版本为${species}.finder.old.scn。"
-			mv ${species}.finder.scn ${species}.finder.old.scn
-	fi
-	
-	# LTR_FINDER
-	${perl} ${LTR_FINDER_parallel} -seq ${genome} -threads ${threads} -harvest_out -finder ${path1}/LTR_FINDER_parallel-1.1/bin/LTR_FINDER.x86_64-1.0.7
-	if [ ! $? -eq 0 ];then
-		echo "Error:in LTR_FINDER_parllel"
-		exit 1
-	fi
-	genomefile="`basename ${genome}`"
-	mv ${genomefile}.finder.combine.scn ${species}.finder.scn
-	#LTRharvest
-	${gt} suffixerator \
-	  -db ${genome} \
-	  -indexname ${species} \
-	  -tis -suf -lcp -des -ssp -sds -dna
-	${gt} ltrharvest \
-	  -index ${species} \
-	  -similar 85 -vic 10 -seed 20 -seqids yes \
-	  -minlenltr 100 -maxlenltr 7000 -mintsd 4 -maxtsd 6 \
-	  -motif TGCA -motifmis 1  > ${species}.harvest.scn
-
-	activate
-	# LTR_retriever 合并前两次的分析(如果你的物种的核苷酸变异速率不是7x10E-9,请手动修改最后一个值)
-	LTR_retriever -genome ${genome} -inharvest ${species}.harvest.scn -infinder ${species}.finder.scn -threads ${threads} -u ${miu}
-	if [ ! $? -eq 0 ];then
-		echo "Error in LTR_retriever"
-		exit 1
-	fi
-	
-	#初步可视化
-	cat ${genome}.pass.list|rev|awk '{print $1,$2,$3}'|rev|tr " " "\t" >${species}.LTR_time.xls
-	Rscript ${path1}/visualization/visual_LAI.R ${genome}.out.LAI ${species} ${PWD}
-	Rscript ${path1}/visualization/visual_LTR.R ${species}.LTR_time.xls ${species} ${PWD}
+# 检查ID长度是否超过13个字符
+function checkID() {
+    local genome=$1
+    local temp_file="${path1}/temp.ID.txt"
+    
+    grep "^>" "${genome}" | cut -d ">" -f2 > "${temp_file}"
+    
+    while read -r line; do
+        ID_len=${#line}
+        echo "${line}的长度是${ID_len}"
+        
+        if [ ${ID_len} -gt 13 ]; then
+            echo "错误: ID '${line}' 的长度超过13个字符，请使用seqkit修改ID后重新运行！" >&2
+            rm -f "${temp_file}"
+            exit 1
+        fi
+    done < "${temp_file}"
+    
+    rm -f "${temp_file}"
 }
 
-##针对多倍体的算法优化
-function Polyploid(){
-	while [ -n "$1" ];
-	do
-		case $1 in
-		-h|--help)
-			echo -e "
-			Usage: \n
-			Polyploid -abbr Species -genome genome.fa -chr ChrString -ploidy1 Ghir_A -ploidy2 Ghir_D \n
-			Polyploid -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_B \n
-			Polyploid -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_B -p4 Ghir_C
-			\n
-			-abbr 物种缩写\n
-			-genome 基因组文件，非压缩文件\n
-			-chr 染色体的字符（例如：chr或Chr) 可以省略此参数，则表示输入的序列没有scaffold. \n
-			-p1 倍性1的字符 \n
-			-p2 倍性2的字符 \n
-			最多到p4即最高为八倍体 \n
-			Note:only for Polyploid \n
-			"
-			exit 0
-			;;
-		-abbr)
-			species=$2
-			shift
-			;;
-		-g|-genome)
-			genome=$2
-			shift
-			;;
-		-chr)
-			ChrStr=$2
-			shift
-			;;
-		-p1|-ploidy1)
-			ploidy1=$2
-			shift
-			;;
-		-p2|-ploidy2)
-			ploidy2=$2
-			shift
-			;;
-		-p3|-ploidy3)
-			ploidy3=$2
-			shift
-			;;
-		-p4|-ploidy4)
-			ploidy4=$2
-			shift
-			;;
-			*)
-			echo "use -h for help!"
-			exit 1
-			;;
-		esac
-		shift
-	done
+# 提取只包含染色体的序列
+function getChr() {
+    if [ $# -lt 2 ]; then
+        echo "用法: getChr ChrString genome.fa" >&2
+        exit 1
+    fi
 
-	#检测输入的基因组文件是否存在
-	if ! [ -e ${genome} ];then
-		echo "the input genome file ${genome} is not exist!"
-		exit 1
-	fi
-
-	#获取基因组文件的文件名和路径
-	fullname="${genome##*/}"
-	dir="${genome%/*}"
-	extension="${fullname##*.}"
-	filename="${fullname%.*}"
-	echo "变量的长度 ${#ChrStr}"
-	
-	#检测ChrStr字符串是否存在
-	if [ ${#ChrStr} -eq 0 ];
-	then
-		#如果没有输入ChrStr表示，输入的是只包含染色体的序列
-		chr_genome="${genome}"
-		echo "用户未输入chrstr字符！"
-	else
-		chr_genome="${filename}.chr.fa"
-		#提取只包含染色体chr的序列
-		getChr ${ChrStr} ${genome}
-		echo "用户输入了chrStr字符！"
-		if [ $? -eq 0 ];then
-			echo "success pass the getChr!"
-		fi
-	fi
-
-
-	#检测ID的长度是否超过15个字符
-	checkID ${chr_genome}
-	if ! [ $? -eq 0 ];then
-		echo "please check the input ${chr_genome} ID ,should be less 15 string."
-		exit 1
-	else
-		echo "success for checkID!"
-	fi
-
-
-	#创建倍性文件列表
-	if [ ${#ploidy1} -ne 0 ];then
-		cat ${chr_genome}|grep ^">"|grep ${ploidy1}|cut -d ">" -f2 >${ploidy1}.ploidy.list.txt
-	fi
-	if [ ${#ploidy2} -ne 0 ];then
-		cat ${chr_genome}|grep ^">"|grep ${ploidy2}|cut -d ">" -f2 >${ploidy2}.ploidy.list.txt
-	fi
-	if [ ${#ploidy3} -ne 0 ];then
-		cat ${chr_genome}|grep ^">"|grep ${ploidy3}|cut -d ">" -f2 >${ploidy3}.ploidy.list.txt
-	fi
-	if [ ${#ploidy4} -ne 0 ];then
-		cat ${chr_genome}|grep ^">"|grep ${ploidy4}|cut -d ">" -f2 >${ploidy4}.ploidy.list.txt
-	fi
-	if [ $? -eq 0 ];then
-		echo "success for make ploidy.list.txt file!"
-	else
-		echo "ERROR in get ploidy.list.txt file!"
-		exit 1
-	fi
-	##开始LTR分析
-	Diploid ${species} ${chr_genome}
-	ploidy=(${ploidy1} ${ploidy2} ${ploidy3} ${ploidy4})
-	for i in ${ploidy[@]}
-	do
-		echo "start analysis ${i}.ploidy.list.txt in `date`"
-		LAI -genome ${chr_genome} -intact ${chr_genome}.pass.list -all ${chr_genome}.out -mono ${i}.ploidy.list.txt
-		Rscript ${path1}/visualization/visual_LAI.R ${i}.ploidy.list.txt.LAI ${i} ${PWD}
-	done
-
+    local ChrStr=$1
+    local genome=$2
+    local filename="${genome%.*}"
+    local temp_file="${path1}/temp.Chrlist.txt"
+    
+    grep "${ChrStr}" "${genome}" | cut -d ">" -f2 > "${temp_file}"
+    # 检查临时文件是否为空
+    if [ ! -s "${temp_file}" ]; then
+        echo "错误: 未找到匹配 '${ChrStr}' 的染色体序列！请检查ChrString参数和基因组文件。" >&2
+        rm -f "${temp_file}"
+        exit 1
+    fi
+    "${seqkit}" grep -f "${temp_file}" "${genome}" | "${seqkit}" seq -i > "${filename}.chr.fa"
+    rm -f "${temp_file}"
 }
 
-case $1 in
-	-h|--help)
-echo -e "
-Purpose:\n
-	Get the LTR_RTs in the genome and calculate the LAI value of the genome at the same time. \n
-	for Diploid use (-D|Diploid)\n
-	for Polyploid (up to octoploid) use (-P|Polyploid) \n
-	
-Usage: \n
-	-h|--help \n
-	-D|Diploid Species genome.fa \n
-	-D|Diploid Species genome.fa ChrString \n
-	-P|Polyploid -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D \n
-	-V | --version \n
-	
-Example:\n
-	LTRfind -D A.thaliana /path/A.thaliana.fa \n
-	LTRfind Diploid A.thaliana /path/A.thaliana.fa chr \n
-	LTRfind -P -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D \n
-	LTRfind -P -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_C \n
-	LTRfind Polyploid -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D -p3 Ghir_C -p4 Ghir_B \n
-	LTRfind -P -abbr Species -g genome.fa -p1 Ghir_A -p2 Ghir_D \n
-Note:\n
-	In run -D or Diploid ，if you input the ChrString , will extract the Chromosome sequence for LTR and LAI (not analysis the scaffold sequence). \n
-	if your input genome.fa ChrID may be like '>1',in this case, you cannot use the ChrStr field to extract chromosome data and filter scaffold. \n
-	It is recommended to use LTRfind after filtering by yourself. The ID length of genome.fa cannot exceed 15 characters. 
+# 二倍体分析主函数
+function Diploid() {
+    if [ $# -lt 2 ]; then
+        echo -e "\n用法: Diploid species genome.fa [ChrStr]\n注意: 仅适用于二倍体\n" >&2
+        exit 1
+    fi
+
+    local species=$1
+    local genome=$2
+    local ChrStr=${3:-}
+    local genomefile
+    
+    # 检查基因组文件是否存在
+    if [ ! -e "${genome}" ]; then
+        echo "错误: 基因组文件 ${genome} 不存在!" >&2
+        exit 1
+    fi
+    # 如果提供了ChrStr参数，提取染色体序列
+    if [ -n "${ChrStr}" ]; then
+        getChr "${ChrStr}" "${genome}"
+        genome="${genome%.*}.chr.fa"
+    fi
+    
+    # 检查ID长度
+    checkID "${genome}" || exit 1
+    
+    # LTR_FINDER分析
+    if [ ! -e "${species}.finder.scn" ]; then
+        echo "开始LTR_FINDER分析..."
+        ${perl} ${LTR_FINDER_parallel} -seq ${genome} -threads ${threads} -harvest_out \
+            -finder "${path1}/LTR_FINDER_parallel-1.1/bin/LTR_FINDER.x86_64-1.0.7" || {
+            echo "LTR_FINDER_parallel分析失败!" >&2
+            exit 1
+        }
+        
+        genomefile=$(basename "${genome}")
+        mv "${genomefile}.finder.combine.scn" "${species}.finder.scn"
+    else
+        echo "已存在输出文件 ${species}.finder.scn, 跳过LTR_FINDER分析。"
+    fi
+    
+    # LTRharvest分析
+    if [ ! -e "${species}.harvest.scn" ]; then
+        echo "开始LTRharvest分析..."
+         ${perl} ${LTR_HARVEST_parallel} -seq ${genome} -threads ${threads} -gt ${gt} || {
+            echo "LTRharvest分析失败!" >&2
+            exit 1
+        }
+        genomefile=$(basename "${genome}")
+        mv ${genomefile}.harvest.combine.scn ${species}.harvest.scn
+    else
+        echo "已存在输出文件 ${species}.harvest.scn, 跳过LTRharvest分析。"
+    fi
+    
+    # LTR_retriever分析
+    echo "开始LTR_retriever分析..."
+    LTR_retriever -genome "${genome}" -inharvest "${species}.harvest.scn" \
+        -infinder "${species}.finder.scn" -threads "${threads}" -u "${miu}" || {
+        echo "LTR_retriever分析失败!" >&2
+        exit 1
+    }
+    
+    # 数据可视化
+    echo "生成可视化结果..."
+    rev "${genome}.pass.list" | awk '{print $1,$2,$3}' | rev | tr " " "\t" > "${species}.LTR_time.xls"
+    $Rscript "${path1}/visualization/visual_LAI.R" "${genome}.out.LAI" "${species}" ${work_path}
+    $Rscript "${path1}/visualization/visual_LTR.R" "${species}.LTR_time.xls" "${species}" ${work_path}
+}
+
+# 多倍体分析函数
+function Polyploid() {
+    local species genome ChrStr ploidy1 ploidy2 ploidy3 ploidy4
+    
+    # 参数解析
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -h|--help)
+                show_polyploid_help
+                exit 0
+                ;;
+            -abbr) species="$2"; shift 2 ;;
+            -g|-genome) genome="$2"; shift 2 ;;
+            -chr) ChrStr="$2"; shift 2 ;;
+            -p1|-ploidy1) ploidy1="$2"; shift 2 ;;
+            -p2|-ploidy2) ploidy2="$2"; shift 2 ;;
+            -p3|-ploidy3) ploidy3="$2"; shift 2 ;;
+            -p4|-ploidy4) ploidy4="$2"; shift 2 ;;
+            *) echo "未知参数: $1" >&2; exit 1 ;;
+        esac
+    done
+    
+    # 检查必要参数
+    if [ -z "${species}" ] || [ -z "${genome}" ]; then
+        echo "错误: 必须提供物种缩写和基因组文件!" >&2
+        show_polyploid_help
+        exit 1
+    fi
+    
+    # 检查基因组文件
+    if [ ! -e "${genome}" ]; then
+        echo "错误: 基因组文件 ${genome} 不存在!" >&2
+        exit 1
+    fi
+    
+    local filename="${genome%.*}"
+    local chr_genome
+    
+    # 处理染色体序列
+    if [ -n "${ChrStr}" ]; then
+        chr_genome="${filename}.chr.fa"
+        getChr "${ChrStr}" "${genome}" || exit 1
+    else
+        chr_genome="${genome}"
+    fi
+    
+    # 检查ID长度
+    checkID "${chr_genome}" || exit 1
+    
+    # 创建倍性文件列表
+    create_ploidy_lists "${chr_genome}" "${ploidy1}" "${ploidy2}" "${ploidy3}" "${ploidy4}" || exit 1
+    
+    # 执行二倍体分析
+    Diploid "${species}" "${chr_genome}"
+    
+    # 对各倍性进行LAI分析
+    local ploidies=(${ploidy1} ${ploidy2} ${ploidy3} ${ploidy4})
+    for ploidy in "${ploidies[@]}"; do
+        if [ -n "${ploidy}" ] && [ -e "${ploidy}.ploidy.list.txt" ]; then
+            echo "开始分析 ${ploidy}.ploidy.list.txt - $(date)"
+            LAI -genome "${chr_genome}" -intact "${chr_genome}.pass.list" -all "${chr_genome}.out" -mono "${ploidy}.ploidy.list.txt"
+            ${Rscript} ${path1}/visualization/visual_LAI.R "${ploidy}.ploidy.list.txt.LAI" "${ploidy}" ${work_path}
+        fi
+    done
+}
+
+# 显示多倍体帮助信息
+function show_polyploid_help() {
+    echo -e "
+用法: 
+Polyploid -abbr 物种缩写 -g 基因组文件 [-chr ChrString] 
+          -p1 倍性1字符 [-p2 倍性2字符] [-p3 倍性3字符] [-p4 倍性4字符]
+
+选项:
+  -abbr      物种缩写
+  -g, -genome 基因组文件(非压缩)
+  -chr       染色体标识字符串(如: chr或Chr), 可选
+  -p1, -ploidy1 倍性1的标识字符
+  -p2, -ploidy2 倍性2的标识字符(可选)
+  -p3, -ploidy3 倍性3的标识字符(可选)
+  -p4, -ploidy4 倍性4的标识字符(可选)
+
+注意: 最多支持八倍体(4个倍性标识)
+
+示例:
+  LTRfind Polyploid -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D
+  LTRfind Polyploid -abbr Species -g genome.fa -p1 Ghir_A -p2 Ghir_D -p3 Ghir_B
 "
-		;;
-	-D|Diploid)
-		shift
-		Diploid $@
-		if [ $? -eq 0 ];                  #判断函数运行返回值，等于0，则成功，不等于0，则检查用户的输入，告知错误原因！
-		then
-			echo "success!"
-		else
-			echo "ERROR!Please check your input info!"
-			exit 1
-		fi
-		;;
-	-P|Polyploid)
-		shift
-		#echo $@
-		Polyploid $@
-		if [ $? -eq 0 ];                  #判断函数运行返回值，等于0，则成功，不等于0，则检查用户的输入，告知错误原因！
-		then
-			echo "All success!"
-			exit 0
-		else
-			echo "ERROR! Please check your input info !"
-			exit 1
-		fi
-		;;
-	-V|--version)
-		echo -e "
-		Version: V0.3.1 \n
-		Author: Mol Chai \n
-		Email: chaimol@163.com "
-		;;
-		*)
-	  echo "Input info is wrong,please test input -h or --help for the help info!"
-	  ;;
+}
+
+# 创建倍性列表文件
+function create_ploidy_lists() {
+    local genome=$1
+    shift
+    
+    for ploidy in "$@"; do
+        if [ -n "${ploidy}" ]; then
+            grep "^>" "${genome}" | grep "${ploidy}" | cut -d ">" -f2 > "${ploidy}.ploidy.list.txt" || {
+                echo "错误: 无法创建 ${ploidy}.ploidy.list.txt" >&2
+                return 1
+            }
+        fi
+    done
+    return 0
+}
+
+# 显示主帮助信息
+function show_main_help() {
+    echo -e "
+用途:
+  获取基因组中的LTR反转录转座子并计算基因组的LAI值
+
+用法:
+  -h|--help       显示此帮助信息
+  -u|--miu        指定miu参数值(可选，默认为config.ini中的值,7e-9)
+  -t|--threads    指定线程数(可选，默认为config.ini中的值,36)
+  -D|Diploid      二倍体分析
+  -P|Polyploid    多倍体分析(最高支持八倍体)
+  -V|--version    显示版本信息
+
+二倍体示例:
+  LTRfind -D A.thaliana /path/A.thaliana.fa
+  LTRfind Diploid A.thaliana /path/A.thaliana.fa chr
+  LTRfind -u 2e-9 -t 16 -D A.thaliana /path/A.thaliana.fa
+
+多倍体示例:
+  LTRfind -P -abbr Species -g genome.fa -chr ChrString -p1 Ghir_A -p2 Ghir_D
+  LTRfind -u 7e-9 -t 36 -P -abbr Species -g genome.fa -p1 Ghir_A -p2 Ghir_D -p3 Ghir_C
+
+注意:
+  1. 运行-D或Diploid时，如果提供ChrString参数，将只分析染色体序列(不分析scaffold)
+  2. 如果基因组ID格式为'>1'这样，不能使用ChrStr参数来过滤scaffold
+  3. 基因组序列ID长度不能超过13个字符
+  4. 如果指定-u或和-t参数，则这2个参数必须在最前面，如果不指定则使用config.ini中的默认值
+"
+}
+
+
+# 主程序
+case "${1:-}" in
+    -h|--help)
+        show_main_help
+        ;;
+    -D|Diploid)
+        shift
+        Diploid "$@"
+        echo "分析成功完成!"
+        ;;
+    -P|Polyploid)
+        shift
+        Polyploid "$@"
+        echo "所有分析成功完成!"
+        ;;
+    -V|--version)
+        echo -e "版本: V0.4\n作者: Mol Chai\n邮箱: chaimol@163.com"
+        ;;
+    *)
+        echo "输入错误，请输入 -h 查看帮助信息" >&2
+        exit 1
+        ;;
 esac

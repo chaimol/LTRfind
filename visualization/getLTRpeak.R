@@ -69,6 +69,7 @@ print(paste0("output all the LTR distribute image is ",getwd(),"/All.LTR_time.de
 dev.off()
 #获取LTR的每一个峰值
 get_peak <- function(dat,latin_name){
+  dat <- na.omit(dat) #删除包含NA的行
   VAF <- dat$Insertion_Time
   d <- density(VAF)
   modes <- function(d,s){
