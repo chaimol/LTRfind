@@ -4,7 +4,7 @@
 - [LTR_FINDER_parallel](https://github.com/oushujun/LTR_FINDER_parallel) 
 - [gt](http://genometools.org/pub/binary_distributions/)
 - [seqkit](https://bioinf.shenwei.me/seqkit/download/)
-- [LTR_retriever](https://github.com/oushujun/LTR_retriever)
+- [LTR_retriever](https://github.com/oushujun/LTR_retriever) V2.9.6
 - [LTR_HARVEST_parallel](https://github.com/oushujun/LTR_HARVEST_parallel)
 - R ggplot2 packages (for visualization only)
 
@@ -142,8 +142,11 @@ Chr     From    To      Intact  Total   raw_LAI LAI
 whole_genome    1       2345845174        0.0191  0.1304  14.64   11.51
 Chr1     1       3000000 0.0092  0.1263  11.32    10.19
 ```
+## 关于输出的LAI值的问题
 该文件的第1行，显示的分别是该物种的基因组总长度是2.3458G,完整的LTR-RTs占基因组比例是1.91%，总共的LTR占基因组的比例是13.04%，
 如果一个物种总的LTR占比低于5%或完整的LTR占比低于0.1%，则LAI软件计算出的LAI值不可信。
+## 关于版本问题
+目前兼容的是LTR_retriever v2.9.6，不兼容LTR_retriever V3.0.1,因为新版本的更新了LTR时间的默认算法，所以会输出很多NA。
 
 # 5. Author & Version
 - Build date:2021.06.17
